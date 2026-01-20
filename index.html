@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>For My Valentine ❤️</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(to bottom right, #ff9a9e, #fad0c4);
+            font-family: 'Segoe UI', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        .card {
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            text-align: center;
+            width: 90%;
+            max-width: 400px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            animation: pop 1s ease;
+        }
+
+        @keyframes pop {
+            0% { transform: scale(0.5); opacity: 0; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+
+        h1 {
+            color: #ff4d6d;
+        }
+
+        p {
+            font-size: 16px;
+            color: #444;
+        }
+
+        .buttons {
+            margin-top: 25px;
+        }
+
+        button {
+            padding: 12px 25px;
+            border: none;
+            border-radius: 30px;
+            font-size: 16px;
+            cursor: pointer;
+            margin: 10px;
+        }
+
+        .yes {
+            background: #ff4d6d;
+            color: white;
+        }
+
+        .no {
+            background: #ddd;
+        }
+
+        .heart {
+            position: fixed;
+            bottom: -20px;
+            color: red;
+            font-size: 20px;
+            animation: float 6s linear infinite;
+        }
+
+        @keyframes float {
+            from { transform: translateY(0); opacity: 1; }
+            to { transform: translateY(-110vh); opacity: 0; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="card" id="card">
+    <h1>Hey My Love ❤️</h1>
+    <p>
+        Even though miles are between us,  
+        my heart is always right there with you. 💕  
+        Every day I fall for you a little more…
+    </p>
+    <p>
+        So I have one very important question for you 😳👉👈
+    </p>
+
+    <h2>Will you be my Valentine? 💌</h2>
+
+    <div class="buttons">
+        <button class="yes" onclick="yesClicked()">YES 💖</button>
+        <button class="no" onclick="noClicked()">No 🙄</button>
+    </div>
+</div>
+
+<script>
+function yesClicked() {
+    document.getElementById("card").innerHTML = `
+        <h1>YAYYYYY 😭💖</h1>
+        <p>
+            You just made me the happiest person ever!!! 🥹✨  
+            Even if we’re far apart, my heart is hugging you tight right now 🤍
+        </p>
+        <p>
+            I love you sooo much and I can’t wait for the day we celebrate together 🥰🌍
+        </p>
+        <h2>Forever Yours 💞</h2>
+    `;
+}
+
+function noClicked() {
+    alert("Wrong button 😤 try again hehe ❤️");
+}
+
+// floating hearts
+setInterval(() => {
+    const heart = document.createElement("div");
+    heart.className = "heart";
+    heart.innerHTML = "❤️";
+    heart.style.left = Math.random() * 100 + "vw";
+    heart.style.fontSize = (15 + Math.random() * 20) + "px";
+    document.body.appendChild(heart);
+
+    setTimeout(() => {
+        heart.remove();
+    }, 6000);
+}, 300);
+</script>
+
+</body>
+</html>
