@@ -22,17 +22,17 @@
             border-radius: 20px;
             text-align: center;
             width: 90%;
-            max-width: 400px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-            animation: pop 1s ease;
+            max-width: 420px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.25);
+            animation: pop 0.8s ease;
         }
 
         @keyframes pop {
-            0% { transform: scale(0.5); opacity: 0; }
+            0% { transform: scale(0.6); opacity: 0; }
             100% { transform: scale(1); opacity: 1; }
         }
 
-        h1 {
+        h1, h2 {
             color: #ff4d6d;
         }
 
@@ -75,6 +75,18 @@
             from { transform: translateY(0); opacity: 1; }
             to { transform: translateY(-110vh); opacity: 0; }
         }
+
+        .shake {
+            animation: shake 0.4s infinite;
+        }
+
+        @keyframes shake {
+            0% { transform: translateX(0); }
+            25% { transform: translateX(-5px); }
+            50% { transform: translateX(5px); }
+            75% { transform: translateX(-5px); }
+            100% { transform: translateX(5px); }
+        }
     </style>
 </head>
 <body>
@@ -82,19 +94,15 @@
 <div class="card" id="card">
     <h1>Hey My Love ❤️</h1>
     <p>
-        Even though miles are between us,  
-        my heart is always right there with you. 💕  
-        Every day I fall for you a little more…
-    </p>
-    <p>
-        So I have one very important question for you 😳👉👈
+        Long distance but unlimited love 😤💕  
+        So answer carefully mister 😳
     </p>
 
     <h2>Will you be my Valentine? 💌</h2>
 
     <div class="buttons">
         <button class="yes" onclick="yesClicked()">YES 💖</button>
-        <button class="no" onclick="noClicked()">No 🙄</button>
+        <button class="no" onclick="firstNo()">No 🙄</button>
     </div>
 </div>
 
@@ -103,18 +111,59 @@ function yesClicked() {
     document.getElementById("card").innerHTML = `
         <h1>YAYYYYY 😭💖</h1>
         <p>
-            You just made me the happiest person ever!!! 🥹✨  
-            Even if we’re far apart, my heart is hugging you tight right now 🤍
+            Obviously you had to say yes 😌❤️  
+            Distance can’t stop us okayyy 😤✨
         </p>
         <p>
-            I love you sooo much and I can’t wait for the day we celebrate together 🥰🌍
+            I love you sooo much and I miss you everyday 🥹🤍
         </p>
         <h2>Forever Yours 💞</h2>
     `;
 }
 
-function noClicked() {
-    alert("Wrong button 😤 try again hehe ❤️");
+function firstNo() {
+    const card = document.getElementById("card");
+    card.classList.add("shake");
+
+    card.innerHTML = `
+        <h1>EXCUSE ME?? 😤💔</h1>
+        <p>
+            Itni himmat kaise hui NO dabane ki 😭  
+            Main itna cute proposal bana ke aayi hoon 😢
+        </p>
+        <p>
+            Long distance jhel rahi hoon phir bhi tum NO?? 😠
+        </p>
+        <p>
+            Ab dobara socho… acche se 😤👉👈
+        </p>
+
+        <div class="buttons">
+            <button class="yes" onclick="yesClicked()">OK YES 😳💖</button>
+            <button class="no" onclick="secondNo()">Still No 😑</button>
+        </div>
+    `;
+}
+
+function secondNo() {
+    const card = document.getElementById("card");
+    card.classList.remove("shake");
+
+    card.innerHTML = `
+        <h1>ACHA THEEK HAI 😭💔</h1>
+        <p>
+            Matlab meri feelings ka koi value hi nahi 😢  
+            Ab main sad corner mein jaa rahi hoon 😔
+        </p>
+        <p>
+            Last chance before I start crying for real 😭💥
+        </p>
+
+        <div class="buttons">
+            <button class="yes" onclick="yesClicked()">YES YES YES 😍💖</button>
+            <button class="no" onclick="yesClicked()">Okay fine YES 😌❤️</button>
+        </div>
+    `;
 }
 
 // floating hearts
@@ -125,10 +174,7 @@ setInterval(() => {
     heart.style.left = Math.random() * 100 + "vw";
     heart.style.fontSize = (15 + Math.random() * 20) + "px";
     document.body.appendChild(heart);
-
-    setTimeout(() => {
-        heart.remove();
-    }, 6000);
+    setTimeout(() => heart.remove(), 6000);
 }, 300);
 </script>
 
